@@ -27,6 +27,14 @@ public abstract class MatherUnit implements InterfaceGame {
 
     @Override
     public String getInfo(){return "Я человек!";}
+    @Override
+    public String getPrint(){
+        return String.format("Имя: %s, Здоровье: %d, Скорость: %d", name, hp, speed);
+    }
+    @Override
+    public int getHp(){return hp;}
+    @Override
+    public int getSpeed(){return speed;}
 
 }
 
