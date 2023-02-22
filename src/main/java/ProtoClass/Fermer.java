@@ -1,0 +1,20 @@
+package ProtoClass;
+
+import java.util.ArrayList;
+
+public class Fermer extends MatherUnit {
+    protected int delivery;
+    public Fermer(String name, int attack, int def, int damage, int maxDamage, int hp, int maxHp, int speed, int x, int y, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam, int delivery) {
+        super(name, attack, def, damage, maxDamage, hp, maxHp, speed, x, y, myTeam, enemyTeam);
+        this.delivery = 1;
+    }
+    public Fermer(String name, int x, int y, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
+        super(name, 1, 1, 1, 1, 1, 1, 3, x, y, myTeam, enemyTeam);
+
+
+    }
+    @Override
+    public String getInfo(){
+        return  "Я крестьянин!";
+    }
+}
