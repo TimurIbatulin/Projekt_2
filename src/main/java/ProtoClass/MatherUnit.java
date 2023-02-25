@@ -5,13 +5,14 @@ import java.util.ArrayList;
 
 
 public abstract class MatherUnit implements InterfaceGame {
-    public String name;
+    public String name, clas;
     public ArrayList<MatherUnit> myTeam;
     public ArrayList<MatherUnit> enemyTeam;
     protected int attack, def, damage, maxDamage, hp, maxHp,speed;
     public Vector2D pos;
 
-    public MatherUnit(String name, int attack, int def, int damage, int maxDamage, int hp, int maxHp, int speed, int x, int y, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
+    public MatherUnit(String clas, String name, int attack, int def, int damage, int maxDamage, int hp, int maxHp, int speed, int x, int y, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
+        this.clas = clas;
         this.name = name;
         this.attack = attack;
         this.def = def;
@@ -56,7 +57,7 @@ public abstract class MatherUnit implements InterfaceGame {
     public String getInfo(){return "Я человек!";}
 
     public String getPrint(){
-        return String.format("Имя: %s, Здоровье: %d, Скорость: %d, X: %d, Y:%d", name, hp, speed, pos.x, pos.y);
+        return String.format("Класс: %4s, Имя: %9s, Здоровье: %2d, Скорость: %2d, X: %2d, Y:%2d", clas, name, hp, speed, pos.x, pos.y);
     }
 
     public String state;

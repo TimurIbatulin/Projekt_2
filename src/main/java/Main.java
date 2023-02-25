@@ -70,8 +70,9 @@ public class Main {
                 return t2.getSpeed() - t1.getSpeed();
             }
         });
-        for (int i = 0; i < allHero.size(); i++) {
-            MatherUnit.step(allHero.get(i).getMyTeam(), allHero.get(i).getEnemyTeam());
+        for (MatherUnit human: allHero) {
+            human.step(human.getMyTeam(), human.getEnemyTeam());
+            System.out.println(human.getPrint());
         }
         while (true){
             user_input.nextLine();
@@ -82,6 +83,7 @@ public class Main {
         String name = String.valueOf(Name.values()[new Random().nextInt(Name.values().length-1)]);
         return name;
     }
+
 
 
 }
