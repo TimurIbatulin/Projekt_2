@@ -15,8 +15,11 @@ public class XbowMan extends Shooter {
     public String getInfo(){
         return  "Я арболетчик!";
     }
+
 //    @Override
-//    public ArrayList<MatherUnit> getmyTeam(){return myTeam;}
-//    @Override
-//    public ArrayList<MatherUnit> getEnemyTaam(){return enemyTeam;}
+//    public ArrayList<MatherUnit> getMyTeam() {return myTeam;}
+    @Override
+    public ArrayList<MatherUnit> getMyTeam(){return myTeam;}
+    @Override
+    public ArrayList<MatherUnit> getEnemyTeam(){return enemyTeam;}
 }

@@ -11,7 +11,7 @@ public abstract class MatherUnit implements InterfaceGame {
     protected int attack, def, damage, maxDamage, hp, maxHp,speed;
     public Vector2D pos;
 
-    public MatherUnit(String name, int attack, int def, int damage, int maxDamage, int hp, int maxHp, int speed, int x, int y,ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
+    public MatherUnit(String name, int attack, int def, int damage, int maxDamage, int hp, int maxHp, int speed, int x, int y, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
         this.name = name;
         this.attack = attack;
         this.def = def;
@@ -27,11 +27,11 @@ public abstract class MatherUnit implements InterfaceGame {
     }
 
 
-    @Override
-    public int getAttack(){return attack;}
+//    @Override
+//    public int getAttack(){return attack;}
 
-    @Override
-    public String getName(){return name;}
+//    @Override
+//    public String getName(){return name;}
     @Override
     public ArrayList<MatherUnit> getEnemyTeam(){return enemyTeam;}
     @Override

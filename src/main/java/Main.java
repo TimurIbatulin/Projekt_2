@@ -76,9 +76,6 @@ public class Main {
         while (true){
             user_input.nextLine();
         }
-
-        //           allHero.get(p).step(allHero.get(p), blueHero, redHero);
-
     }
 
     private static String getName(){
