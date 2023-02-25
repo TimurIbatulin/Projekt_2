@@ -27,16 +27,10 @@ public abstract class MatherUnit implements InterfaceGame {
     }
 
 
-//    @Override
-//    public int getAttack(){return attack;}
-
-//    @Override
-//    public String getName(){return name;}
-    @Override
     public ArrayList<MatherUnit> getEnemyTeam(){return enemyTeam;}
-    @Override
     public ArrayList<MatherUnit> getMyTeam(){return myTeam;}
-
+    public int getSpeed(){return speed;}
+    public  int getHp(){return hp;}
 
     @Override
     public void step(ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam){ }
@@ -59,33 +53,11 @@ public abstract class MatherUnit implements InterfaceGame {
     }
 
 
-//    @Override
-//    public void step() {
-//        if (getHp()>0){
-//            if (getShot()>0){
-//                System.out.println("Сейчас кого-нибудь найду и как тресну!");
-//                int victim = SelectionEnemy(pos.x, pos.y, enemyTeam);
-//                System.out.println(enemyTeam.get(victim).getHp());
-//
-//            }
-//        }
-//    }
-
-//    @Override
-//    public void step(MatherUnit, ArrayList<MatherUnit> list1, ArrayList<MatherUnit> list2) {
-//       }
-
-
-    @Override
     public String getInfo(){return "Я человек!";}
-    @Override
+
     public String getPrint(){
         return String.format("Имя: %s, Здоровье: %d, Скорость: %d, X: %d, Y:%d", name, hp, speed, pos.x, pos.y);
     }
-    @Override
-    public int getHp(){return hp;}
-    @Override
-    public int getSpeed(){return speed;}
 
     public String state;
 }

@@ -15,18 +15,11 @@ public abstract class Shooter extends MatherUnit {
         this.shot = shot;
     }
 
-//    @Override
-//    public int getShot(){ return shot;}
-//    @Override
-//    public ArrayList<MatherUnit> getmyTeam(){return myTeam;}
-//    @Override
-//    public ArrayList<MatherUnit> getEnemyTaam(){return enemyTeam;}
-
     @Override
     public void step(ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
         if (state.equals("Die") || shot == 0) return;
         int target = findNearest(enemyTeam);
-        int damage = (enemyTeam.get(target).def - attack > 0) ? this.damage : (enemyTeam.get(target).def - attack < 0) ? maxDamage : ((maxDamage + damage) / 2);
+        int damage = (enemyTeam.get(target).def - attack > 0) ? this.damage : (enemyTeam.get(target).def - attack < 0) ? maxDamage : ((maxDamage + this.damage) / 2);
         enemyTeam.get(target).getDamage(damage);
         for (int i = 0; i < myTeam.size(); i++) {
             if (myTeam.get(i).getClass() == Fermer.class && myTeam.get(i).state.equals("Stande")) {
