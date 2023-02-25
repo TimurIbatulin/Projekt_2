@@ -3,7 +3,12 @@ package ProtoClass;
 import java.util.ArrayList;
 
 public interface InterfaceGame {
-    void step();
+    ArrayList<MatherUnit> getMyTeam();
+
+    void step(ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam);
+
+    void getDamage(int damage);
+
     String getInfo();
     int getAttack();
     String getName();
@@ -12,6 +17,7 @@ public interface InterfaceGame {
     int getHp();
     int getSpeed();
     ArrayList<MatherUnit> getEnemyTeam();
+    ArrayList<MatherUnit> myTeam();
 
 
 

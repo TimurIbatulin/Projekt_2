@@ -3,12 +3,14 @@ import ProtoClass.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<MatherUnit> redHero = new ArrayList<>();
         ArrayList<MatherUnit> blueHero = new ArrayList<>();
         ArrayList<MatherUnit> allHero = new ArrayList<>();
+        Scanner user_input = new Scanner(System.in);
         int x = 1;
         int y = 1;
 
@@ -68,11 +70,15 @@ public class Main {
                 return t2.getSpeed() - t1.getSpeed();
             }
         });
-        for (int p = 0; p < allHero.size(); p++) {
-//            allHero.get(p).step(allHero.get(p), blueHero, redHero);
-            System.out.println(allHero.get(p).getEnemyTeam());
+        for (int i = 0; i < allHero.size(); i++) {
+            MatherUnit.step(allHero.get(i).getMyTeam(), allHero.get(i).getEnemyTeam());
         }
-//        redHero.get(1).step(redHero, blueHero);
+        while (true){
+            user_input.nextLine();
+        }
+
+        //           allHero.get(p).step(allHero.get(p), blueHero, redHero);
+
     }
 
     private static String getName(){
