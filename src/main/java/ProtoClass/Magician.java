@@ -18,4 +18,14 @@ public class Magician extends MatherUnit {
     public String getInfo(){
         return  "Я маг!";
     }
+
+    @Override
+    public void step(MatherUnit hero, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
+        if (hero.state.equals("Die")) return;
+        int target = help(myTeam);
+        int dam = (enemyTeam.get(target).def - attack > 0) ? damage : (enemyTeam.get(target).def - attack < 0) ? maxDamage : ((maxDamage + damage) / 2);
+        myTeam.get(target).getDamage(dam);
+
+
+    }
 }

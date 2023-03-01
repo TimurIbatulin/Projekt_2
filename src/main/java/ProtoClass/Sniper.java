@@ -15,4 +15,6 @@ public class Sniper extends Shooter {
     public String getInfo(){
         return  "Я снайпер!";
     }
+
+
 }

@@ -20,4 +20,6 @@ public class XbowMan extends Shooter {
 //    public ArrayList<MatherUnit> getMyTeam(){return myTeam;}
 //    @Override
 //    public ArrayList<MatherUnit> getEnemyTeam(){return enemyTeam;}
+
+
 }

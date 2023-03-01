@@ -11,8 +11,6 @@ public class Fermer extends MatherUnit {
     public Fermer(String name, int x, int y, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
         super("Фермер", name, 1, 1, 1, 1, 1, 1, 3, x, y, myTeam, enemyTeam);
         this.delivery = 1;
-
-
     }
 
     public int getDelivery() {

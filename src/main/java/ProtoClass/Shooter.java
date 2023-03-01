@@ -12,15 +12,17 @@ public abstract class Shooter extends MatherUnit {
 
     public Shooter(String clas, String name, int attack, int def, int damage, int maxDamage, int hp, int maxHp, int speed, int x, int y, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam, int shot) {
         super(clas, name, attack, def, damage, maxDamage, hp, maxHp, speed, x, y, myTeam, enemyTeam);
+        super.damage = damage;
         this.shot = shot;
     }
 
     @Override
-    public void step(ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
-        if (state.equals("Die") || shot == 0) return;
+    public void step(MatherUnit hero, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
+        if (hero.state.equals("Die") || shot == 0) return;
         int target = findNearest(enemyTeam);
-        int damage = (enemyTeam.get(target).def - attack > 0) ? this.damage : (enemyTeam.get(target).def - attack < 0) ? maxDamage : ((maxDamage + this.damage) / 2);
-        enemyTeam.get(target).getDamage(damage);
+        int dam = (enemyTeam.get(target).def - attack > 0) ? damage : (enemyTeam.get(target).def - attack < 0) ? maxDamage : ((maxDamage + damage) / 2);
+//        System.out.println(dam);
+        enemyTeam.get(target).getDamage(dam);
         for (int i = 0; i < myTeam.size(); i++) {
             if (myTeam.get(i).getClass() == Fermer.class && myTeam.get(i).state.equals("Stande")) {
                 myTeam.get(i).state = "Buse";
@@ -28,13 +30,12 @@ public abstract class Shooter extends MatherUnit {
             }
         }
         shot--;
-
     }
     protected boolean findFarmer(ArrayList<MatherUnit> myTeam) {
         ArrayList<MatherUnit> arrayFermer = new ArrayList<>();
         for (int i = 0; i < myTeam.size(); i++){
             if (myTeam.get(i).getClass() == Fermer.class){
-                if (((Fermer) myTeam.get(i)).getDelivery() > 0) {
+                if (((Fermer) myTeam.get(i)).delivery > 0) {
                     arrayFermer.add(myTeam.get(i));
                 }
             }
@@ -49,6 +50,10 @@ public abstract class Shooter extends MatherUnit {
                 ((Fermer) arrayFermer.get(findNearest(arrayFermer))).setDelivery(0);
                 return true;
         }
+    }
+    @Override
+    public String getPrint(){
+        return String.format("Класс: %11s| Имя: %12s| Здоровье: %3d| Скорость: %3d| X: %3d| Y:%3d| Состояние: %5s, Стрелы: %d", clas, name, hp, speed, pos.x, pos.y, state, shot);
     }
 
 }

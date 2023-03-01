@@ -34,18 +34,38 @@ public abstract class MatherUnit implements InterfaceGame {
     public  int getHp(){return hp;}
 
     @Override
-    public void step(ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam){ }
+    public void step(MatherUnit hero, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam){ }
     protected int findNearest(ArrayList<MatherUnit> enemyTeam){
         double min = 100;
         int index = 0;
         for (int i = 0; i < enemyTeam.size(); i++){
-            if (min > pos.getDistance(enemyTeam.get(i).pos) & !enemyTeam.get(i).state.equals("Die")){
+            if (enemyTeam.get(i).getHp()>0) {
+                if (min > pos.getDistance(enemyTeam.get(i).pos) & !enemyTeam.get(i).state.equals("Die") & enemyTeam.get(i).getHp() > 0) {
+                    index = i;
+                    min = pos.getDistance(enemyTeam.get(i).pos);
+                }
+            }
+        }
+        System.out.println(index);
+        return index;
+    }
+
+    protected int help(ArrayList<MatherUnit> myTeam){
+        int h = 50;
+        int index = 0;
+        for (int i = 0; i < myTeam.size(); i++){
+            if (myTeam.get(i).getHp()<=0){
+                myTeam.get(i).state = "Die";
+            }
+            if (myTeam.get(i).getHp() < myTeam.get(i).maxHp & myTeam.get(i).getHp() > 0 ){
+                h = myTeam.get(i).getHp();
                 index = i;
-                min = pos.getDistance(enemyTeam.get(i).pos);
             }
         }
         return index;
     }
+
+
     @Override
     public void getDamage(int damage){
         hp -= damage;
@@ -57,7 +77,7 @@ public abstract class MatherUnit implements InterfaceGame {
     public String getInfo(){return "Я человек!";}
 
     public String getPrint(){
-        return String.format("Класс: %4s, Имя: %9s, Здоровье: %2d, Скорость: %2d, X: %2d, Y:%2d", clas, name, hp, speed, pos.x, pos.y);
+        return String.format("Класс: %11s| Имя: %12s| Здоровье: %3d| Скорость: %3d| X: %3d| Y:%3d| Состояние: %s", clas, name, hp, speed, pos.x, pos.y, state);
     }
 
     public String state;
