@@ -6,10 +6,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+
+    public static ArrayList<MatherUnit> redHero = new ArrayList<>();
+    public static ArrayList<MatherUnit> blueHero = new ArrayList<>();
+    public static ArrayList<MatherUnit> allHero = new ArrayList<>();
+
     public static void main(String[] args) {
-        ArrayList<MatherUnit> redHero = new ArrayList<>();
-        ArrayList<MatherUnit> blueHero = new ArrayList<>();
-        ArrayList<MatherUnit> allHero = new ArrayList<>();
+//        ArrayList<MatherUnit> redHero = new ArrayList<>();
+//        ArrayList<MatherUnit> blueHero = new ArrayList<>();
+//        ArrayList<MatherUnit> allHero = new ArrayList<>();
         Scanner user_input = new Scanner(System.in);
         System.out.println("Pres Enter to begin.");
         createMyTeam(redHero, blueHero);
@@ -21,8 +26,8 @@ public class Main {
             View.view();
             user_input.nextLine();
             for (MatherUnit human: allHero) {
-                if (redHero.contains(human)) human.step(redHero, blueHero);
-                else human.step(blueHero, redHero);
+                if (redHero.contains(human)) human.step(human, redHero, blueHero);
+                else human.step(human, redHero, blueHero);
             }
         }
 
