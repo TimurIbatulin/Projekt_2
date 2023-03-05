@@ -32,6 +32,7 @@ public abstract class MatherUnit implements InterfaceGame {
     public ArrayList<MatherUnit> getMyTeam(){return myTeam;}
     public int getSpeed(){return speed;}
     public  int getHp(){return hp;}
+    public int[] getPos(){return new int[]{pos.x, pos.y};}
 
     @Override
     public void step(MatherUnit hero, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam){ }
@@ -40,13 +41,14 @@ public abstract class MatherUnit implements InterfaceGame {
         int index = 0;
         for (int i = 0; i < enemyTeam.size(); i++){
             if (enemyTeam.get(i).getHp()>0) {
-                if (min > pos.getDistance(enemyTeam.get(i).pos) & !enemyTeam.get(i).state.equals("Die") & enemyTeam.get(i).getHp() > 0) {
+                if ((min > pos.getDistance(enemyTeam.get(i).pos)) && (enemyTeam.get(i).getHp() > 0)) {
                     index = i;
                     min = pos.getDistance(enemyTeam.get(i).pos);
                 }
             }
         }
-        System.out.println(index);
+//        System.out.println(index);
+//        System.out.println(enemyTeam.get(index).getPrint());
         return index;
     }
 

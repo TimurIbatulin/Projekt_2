@@ -11,23 +11,32 @@ public class Main {
         ArrayList<MatherUnit> blueHero = new ArrayList<>();
         ArrayList<MatherUnit> allHero = new ArrayList<>();
         Scanner user_input = new Scanner(System.in);
+        System.out.println("Pres Enter to begin.");
         createMyTeam(redHero, blueHero);
         createEnemyTeam(blueHero, redHero);
         creatAllTeem(allHero, redHero, blueHero);
         sortTeam(allHero);
 
+        while (true){
+            View.view();
+            user_input.nextLine();
+            for (MatherUnit human: allHero) {
+                if (redHero.contains(human)) human.step(redHero, blueHero);
+                else human.step(blueHero, redHero);
+            }
+        }
 
 //        for (MatherUnit human: allHero) {
 //            human.step(human.getMyTeam(), human.getEnemyTeam());
 //            System.out.println(human.getPrint());
 //        }
-        while (true){
-            for (MatherUnit human: allHero) {
-                human.step(human, human.getMyTeam(), human.getEnemyTeam());
-                System.out.println(human.getPrint());
-            }
-            user_input.nextLine();
-        }
+//        while (true){
+//            for (MatherUnit human: allHero) {
+//                human.step(human, human.getMyTeam(), human.getEnemyTeam());
+//                System.out.println(human.getPrint());
+//            }
+//            user_input.nextLine();
+//        }
 
 
     }
