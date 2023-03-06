@@ -37,11 +37,11 @@ public abstract class MatherUnit implements InterfaceGame {
     @Override
     public void step(MatherUnit hero, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam){ }
     protected int findNearest(ArrayList<MatherUnit> enemyTeam){
-        double min = 100;
-        int index = 0;
+        double min = 10000000;
+        int index = 10;
         for (int i = 0; i < enemyTeam.size(); i++){
             if (enemyTeam.get(i).getHp()>0) {
-                if ((min > pos.getDistance(enemyTeam.get(i).pos)) && (enemyTeam.get(i).getHp() > 0)) {
+                if ((min > pos.getDistance(enemyTeam.get(i).pos))) {
                     index = i;
                     min = pos.getDistance(enemyTeam.get(i).pos);
                 }
@@ -79,8 +79,11 @@ public abstract class MatherUnit implements InterfaceGame {
     public String getInfo(){return "Я человек!";}
 
     public String getPrint(){
-        return String.format("Класс: %11s| Имя: %12s| Здоровье: %3d| Скорость: %3d| X: %3d| Y:%3d| Состояние: %s", clas, name, hp, speed, pos.x, pos.y, state);
+        return String.format("%10s HP:%3d State: %5s %7s", clas, hp, state, "");
     }
+//    public String getPrint(){
+//        return String.format("Класс: %11s| Имя: %12s| Здоровье: %3d| Скорость: %3d| X: %3d| Y:%3d| Состояние: %s", clas, name, hp, speed, pos.x, pos.y, state);
+//    }
 
     public String state;
 }

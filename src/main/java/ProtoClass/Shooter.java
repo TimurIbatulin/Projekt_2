@@ -1,7 +1,5 @@
 package ProtoClass;
 
-import ProtoClass.MatherUnit;
-
 import java.util.ArrayList;
 
 
@@ -20,16 +18,19 @@ public abstract class Shooter extends MatherUnit {
     public void step(MatherUnit hero, ArrayList<MatherUnit> myTeam, ArrayList<MatherUnit> enemyTeam) {
         if (hero.state.equals("Die") || shot == 0) return;
         int target = findNearest(enemyTeam);
-        int dam = (enemyTeam.get(target).def - attack > 0) ? damage : (enemyTeam.get(target).def - attack < 0) ? maxDamage : ((maxDamage + damage) / 2);
-//        System.out.println(dam);
-        enemyTeam.get(target).getDamage(dam);
-        for (int i = 0; i < myTeam.size(); i++) {
-            if (myTeam.get(i).getClass() == Fermer.class && myTeam.get(i).state.equals("Stande")) {
-                myTeam.get(i).state = "Buse";
-                return;
+        if (target < 10){
+            int dam = (enemyTeam.get(target).def - attack > 0) ? damage : (enemyTeam.get(target).def - attack < 0) ? maxDamage : ((maxDamage + damage) / 2);
+            //        System.out.println(dam);
+            enemyTeam.get(target).getDamage(dam);
+            for (int i = 0; i < myTeam.size(); i++) {
+                if (myTeam.get(i).getClass() == Fermer.class && myTeam.get(i).state.equals("Stande")) {
+                    myTeam.get(i).state = "Buse";
+                    return;
+                }
             }
+            shot--;
         }
-        shot--;
+
     }
     protected boolean findFarmer(ArrayList<MatherUnit> myTeam) {
         ArrayList<MatherUnit> arrayFermer = new ArrayList<>();
@@ -51,9 +52,13 @@ public abstract class Shooter extends MatherUnit {
                 return true;
         }
     }
+//    @Override
+//    public String getPrint(){
+//        return String.format("Класс: %11s| Имя: %12s| Здоровье: %3d| Скорость: %3d| X: %3d| Y:%3d| Состояние: %5s, Стрелы: %d", clas, name, hp, speed, pos.x, pos.y, state, shot);
+//    }
     @Override
     public String getPrint(){
-        return String.format("Класс: %11s| Имя: %12s| Здоровье: %3d| Скорость: %3d| X: %3d| Y:%3d| Состояние: %5s, Стрелы: %d", clas, name, hp, speed, pos.x, pos.y, state, shot);
+        return String.format("%10s HP: %3d State: %5s  Sh: %2s", clas, hp, state, shot);
     }
 
 }

@@ -27,7 +27,7 @@ public class Main {
             user_input.nextLine();
             for (MatherUnit human: allHero) {
                 if (redHero.contains(human)) human.step(human, redHero, blueHero);
-                else human.step(human, redHero, blueHero);
+                else human.step(human, blueHero, redHero);
             }
         }
 

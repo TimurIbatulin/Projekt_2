@@ -28,7 +28,7 @@ public class View {
         String out = "| ";
         for (MatherUnit human: Main.allHero) {
             if (human.getPos()[0] == x && human.getPos()[1] == y){
-                if (human.getHp() == 0) {
+                if (human.getHp() <= 0) {
                     out = "|" + (AnsiColors.ANSI_RED + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
                 }
@@ -57,9 +57,9 @@ public class View {
             System.out.print(getChar(1, i));
         }
         System.out.print("|    ");
-        System.out.print(Main.blueHero.get(0));
-        tabSetter(Main.blueHero.get(0).toString().length(), l[0]);
-        System.out.println(Main.redHero.get(0));
+        System.out.print(Main.redHero.get(0).getPrint());
+        tabSetter(Main.redHero.get(0).toString().length(), l[0]);
+        System.out.println(Main.blueHero.get(0).getPrint());
         System.out.println(midl10);
 
         for (int i = 2; i < 10; i++) {
@@ -67,18 +67,18 @@ public class View {
                 System.out.print(getChar(i, j));
             }
             System.out.print("|    ");
-            System.out.print(Main.blueHero.get(i-1));
-            tabSetter(Main.blueHero.get(i-1).toString().length(), l[0]);
-            System.out.println(Main.redHero.get(i-1));
+            System.out.print(Main.redHero.get(i-1).getPrint());
+            tabSetter(Main.redHero.get(i-1).toString().length(), l[0]);
+            System.out.println(Main.blueHero.get(i-1).getPrint());
             System.out.println(midl10);
         }
         for (int j = 1; j < 11; j++) {
             System.out.print(getChar(10, j));
         }
         System.out.print("|    ");
-        System.out.print(Main.blueHero.get(9));
-        tabSetter(Main.blueHero.get(9).toString().length(), l[0]);
-        System.out.println(Main.redHero.get(9));
+        System.out.print(Main.redHero.get(9).getPrint());
+        tabSetter(Main.redHero.get(9).toString().length(), l[0]);
+        System.out.println(Main.blueHero.get(9).getPrint());
         System.out.println(bottom10);
     }
 }
